@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Universal Clicker Host</title>
+	<script src="scripts/socket.io/socket.io.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+</head>
+
+<body>
+	<div id="connect">
+		Session Name: <input type="text" id="id"/><br />
+		<input id='create' class='button' type='submit' value='Create'/>
+	</div>
+	<div id="host">
+		<div id="question">
+			Prompt: <input type="text" id="prompt"/><br />
+			Answer 1: <input type="text" id="a1"/><br />
+			Answer 2: <input type="text" id="a2"/><br />
+			Answer 3: <input type="text" id="a3"/><br />
+			Answer 4: <input type="text" id="a4"/><br />
+			Correct Answer Number: <input type="text" id="correct" /><br />
+			<input id='new' class='button' type='submit' value='New Question'/>
+			<input id='end' class='button' type='submit' value='End Current Question'/>
+		</div>
+		<div id="responses">
+			<!-- To be filled in by javascript -->
+		</div>
+	</div>
+	<script src="scripts/host.js"></script>
+</body>

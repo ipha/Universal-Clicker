@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Universal Clicker Client</title>
+	<script src="scripts/socket.io/socket.io.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+</head>
+
+<body>
+	<div id="connect">
+		Session Name: <input type="text" id="id" value="test"/><br />
+		Name: <input type="text" id="name" value="test"/><br />
+		<input id='join' class='button' type='submit' value='Join'/>
+	</div>
+
+	<div id="client">
+		Prompt: <input type="text" id="prompt" disabled/><br />
+		Answer 1: <input type="text" id="a1" disabled/><input type="radio" name="answer" value="1"><br />
+		Answer 2: <input type="text" id="a2" disabled/><input type="radio" name="answer" value="2"><br />
+		Answer 3: <input type="text" id="a3" disabled/><input type="radio" name="answer" value="3"><br />
+		Answer 4: <input type="text" id="a4" disabled/><input type="radio" name="answer" value="4"><br />
+		<input id='submit' class='button' type='submit' value='Submit'/><br />
+		<div id="correctAnswer"></div>
+	</div>
+	<script src="scripts/client.js"></script>
+</body>
