@@ -5,11 +5,11 @@
 $("#join").click(function(){
 	var id = $("#id").val();
 	var name = $("#name").val();
-	socket.emit('create', {id: id, name: name});
+	socket.emit('join', {id: id, name: name});
 });
 
 $("#submit").click(function(){
-	var answer = $("#answer").val();
+	var answer = $("input:radio[name=answer]:checked").val();
 	socket.emit('answer', {answer: answer});
 });
 
@@ -17,7 +17,7 @@ $("#submit").click(function(){
 //Socket.io conenction and events
 //**
 
-var socket = io.connect("http://iphawrt.dyndns.org:8000");
+var socket = io.connect("http://" + window.location.hostname + ":8000");
 
 socket.on('status', function(data){
 	if(data == "connected"){
@@ -30,14 +30,15 @@ socket.on('error', function(data){
 });
 
 socket.on('question', function(data){
-	$("#prompt").value = data.prompt;
-	$("#a1").value = data.answeres[0];
-	$("#a2").value = data.answeres[1];
-	$("#a3").value = data.answeres[2];
-	$("#a4").value = data.answeres[3];
-	$("#correctAnswer").html = "";
+	console.log("Got question");
+	$("#prompt").val(data.prompt);
+	$("#a1").val(data.answers[0]);
+	$("#a2").val(data.answers[1]);
+	$("#a3").val(data.answers[2]);
+	$("#a4").val(data.answers[3]);
+	$("#correctAnswer").html("");
 });
 
 socket.on('answer', function(data){
-	$("#correctAnswer").html = "Correct Answer: " + data.answer;
+	$("#correctAnswer").html("Correct Answer: " + data.answer);
 });
