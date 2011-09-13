@@ -48,6 +48,7 @@ function host(id, socket){
 
 	this.clientConnect = function(name){
 		this.socket.emit('clientConnect', {name: name});
+		this.clients[name].socket.emit('question', {prompt: this.question.prompt, answers: this.question.answers});
 	}
 
 	this.clientDisconnect = function(name){
@@ -86,7 +87,7 @@ function host(id, socket){
 	//**
 	this.socket.on('new', partial(this.newCallback, this));
 	this.socket.on('timesup', partial(this.timesupCallback, this));
-	this.socket.on('disconnect', partial(this.disconnectedCallback, this));
+	this.socket.on('disconnect', partial(this.disconnectCallback, this));
 
 
 }
@@ -117,7 +118,7 @@ io.sockets.on('connection', function(socket){
 	});
 
 	socket.on('join', function(data){
-		var name = data.name.replace(' ','_');
+		var name = data.name.replace(/ /g,'_');
 		var id = data.id;
 
 		if(sessions[id]){
